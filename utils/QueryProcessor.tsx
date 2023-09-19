@@ -66,5 +66,12 @@ export default function QueryProcessor(query: string): string {
     });
     return primes.join(", ");
   }
+  //What is 31 minus 19?
+  const subtractMatch = query.match(/What is (\d+) minus (\d+)/);
+  if (subtractMatch) {
+    const x: number = parseInt(subtractMatch[1]);
+    const y: number = parseInt(subtractMatch[2]);
+    return (x-y).toString();
+  }
   return "";
 }

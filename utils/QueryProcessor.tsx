@@ -24,5 +24,13 @@ export default function QueryProcessor(query: string): string {
     const z: number = parseInt(findMax[3]);
     return Math.max(x, y, z).toString();
   }
+
+  // What is 78 multiplied by 83?
+  const multiplyMatch = query.match(/What is (\d+) multiplied by (\d+)/);
+  if (multiplyMatch) {
+    const x: number = parseInt(multiplyMatch[1]);
+    const y: number = parseInt(multiplyMatch[2]);
+    return (x*y).toString();
+  }
   return "";
 }

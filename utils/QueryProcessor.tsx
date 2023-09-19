@@ -73,5 +73,12 @@ export default function QueryProcessor(query: string): string {
     const y: number = parseInt(subtractMatch[2]);
     return (x-y).toString();
   }
+  // 	What is 85 to the power of 15?
+  const powerMatch = query.match(/What is (\d+) to the power of (\d+)/);
+  if (powerMatch) {
+    const x: number = parseInt(powerMatch[1]);
+    const y: number = parseInt(powerMatch[2]);
+    return (x**y).toString();
+  }
   return "";
 }

@@ -79,5 +79,14 @@ export default function QueryProcessor(query: string): string {
     const y: number = parseInt(powerMatch[2]);
     return (x**y).toString();
   }
+
+  //What is 30 plus 29 plus 95?
+  const addMultipleMatch = query.match(/What is (\d+) plus (\d+) plus (\d+)/);
+  if (addMultipleMatch) {
+    const x: number = parseInt(addMultipleMatch[1]);
+    const y: number = parseInt(addMultipleMatch[2]);
+    const z: number = parseInt(addMultipleMatch[3]);
+    return (x+y+z).toString();
+  }
   return "";
 }

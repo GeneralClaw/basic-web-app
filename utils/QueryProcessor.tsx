@@ -9,6 +9,12 @@ export default function QueryProcessor(query: string): string {
     return "My Andrew ID is dballuff";
   } else if (query.toLowerCase().includes("name")) {
     return "My name is General_Claw";
-  }  
+  }
+  const addMatch = query.match(/What is (\d+) plus (\d+)/);
+  if (addMatch) {
+    const x: number = parseInt(addMatch[1]);
+    const y: number = parseInt(addMatch[2]);
+    return (x+y).toString();
+  }
   return "";
 }

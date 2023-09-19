@@ -25,12 +25,29 @@ export default function QueryProcessor(query: string): string {
     return Math.max(x, y, z).toString();
   }
 
-  // What is 78 multiplied by 83?
+  
   const multiplyMatch = query.match(/What is (\d+) multiplied by (\d+)/);
   if (multiplyMatch) {
     const x: number = parseInt(multiplyMatch[1]);
     const y: number = parseInt(multiplyMatch[2]);
     return (x*y).toString();
+  }
+  //Which of the following numbers is both a square and a cube: 677, 624, 64, 324, 512, 3678, 362?
+  const squareCubeMatch = query.match(/Which of the following numbers is both a square and a cube: (\d+), (\d+), (\d+), (\d+), (\d+), (\d+), (\d+)?/);
+  if (squareCubeMatch) {
+    const x: number = parseInt(squareCubeMatch[1]);
+    const y: number = parseInt(squareCubeMatch[2]);
+    const z: number = parseInt(squareCubeMatch[3]);
+    const a: number = parseInt(squareCubeMatch[4]);
+    const b: number = parseInt(squareCubeMatch[5]);
+    const c: number = parseInt(squareCubeMatch[6]);
+    const d: number = parseInt(squareCubeMatch[7]);
+    const nums: number[] = [x, y, z, a, b, c, d];
+    const squares: number[] = nums.map((num) => Math.sqrt(num));
+    const cubes: number[] = nums.map((num) => Math.cbrt(num));
+    const squareAndCube: number[] = squares.filter((num) => cubes.includes(num));
+    //square the result
+    return (squareAndCube[0]**2).toString();
   }
   return "";
 }

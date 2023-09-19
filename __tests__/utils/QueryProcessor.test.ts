@@ -44,4 +44,9 @@ describe("QueryProcessor", () => {
         expect(QueryProcessor("What is 78 multiplied by 83?")).toEqual("6474");
         expect(QueryProcessor("What is 2 multiplied by 3?")).toEqual("6");
     });
+    //Which of the following numbers is both a square and a cube: 677, 624, 64, 324, 512, 3678, 362?
+    test('should find square and cube', () => {
+        expect(QueryProcessor("Which of the following numbers is both a square and a cube: 677, 624, 64, 324, 512, 3678, 362?")).toEqual("64");
+        expect(QueryProcessor("Which of the following numbers is both a square and a cube: 677, 624, 324, 512, 3678, 362?")).toEqual("");
+    });
 });

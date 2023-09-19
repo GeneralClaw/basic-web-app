@@ -60,4 +60,8 @@ describe("QueryProcessor", () => {
         expect(QueryProcessor("What is 31 minus 19?")).toEqual("12");
         expect(QueryProcessor("What is 31 minus 19?")).toEqual("12");
     });
+    // 	What is 85 to the power of 15?
+    test('should find power of numbers', () => {
+        expect(QueryProcessor("What is 2 to the power of 3?")).toEqual("8");
+    });
 });

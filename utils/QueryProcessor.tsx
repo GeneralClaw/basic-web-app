@@ -35,19 +35,18 @@ export default function QueryProcessor(query: string): string {
   //Which of the following numbers is both a square and a cube: 677, 624, 64, 324, 512, 3678, 362?
   const squareCubeMatch = query.match(/Which of the following numbers is both a square and a cube: (\d+), (\d+), (\d+), (\d+), (\d+), (\d+), (\d+)?/);
   if (squareCubeMatch) {
-    const x: number = parseInt(squareCubeMatch[1]);
-    const y: number = parseInt(squareCubeMatch[2]);
-    const z: number = parseInt(squareCubeMatch[3]);
-    const a: number = parseInt(squareCubeMatch[4]);
-    const b: number = parseInt(squareCubeMatch[5]);
-    const c: number = parseInt(squareCubeMatch[6]);
-    const d: number = parseInt(squareCubeMatch[7]);
-    const nums: number[] = [x, y, z, a, b, c, d];
-    const squares: number[] = nums.map((num) => Math.sqrt(num));
-    const cubes: number[] = nums.map((num) => Math.cbrt(num));
-    const squareAndCube: number[] = squares.filter((num) => cubes.includes(num));
-    //square the result
-    return (squareAndCube[0]**2).toString();
+    const nums = squareCubeMatch.slice(1).map(Number);
+    
+    const squareAndCube = nums.filter((num) => {
+      const root = Math.pow(num, 1/6);
+      return root === Math.floor(root);
+    });
+    
+    if (squareAndCube.length > 0) {
+      return (squareAndCube[0]).toString();
+    } else {
+      return "";
+    }
   }
   // Which of the following numbers are primes: 88, 23, 96, 10, 12?
   const primeMatch = query.match(/Which of the following numbers are primes: (\d+), (\d+), (\d+), (\d+), (\d+)?/);

@@ -49,5 +49,22 @@ export default function QueryProcessor(query: string): string {
     //square the result
     return (squareAndCube[0]**2).toString();
   }
+  // Which of the following numbers are primes: 88, 23, 96, 10, 12?
+  const primeMatch = query.match(/Which of the following numbers are primes: (\d+), (\d+), (\d+), (\d+), (\d+)?/);
+  if (primeMatch) {
+    const x: number = parseInt(primeMatch[1]);
+    const y: number = parseInt(primeMatch[2]);
+    const z: number = parseInt(primeMatch[3]);
+    const a: number = parseInt(primeMatch[4]);
+    const b: number = parseInt(primeMatch[5]);
+    const nums: number[] = [x, y, z, a, b];
+    const primes: number[] = nums.filter((num) => {
+      for (let i = 2; i < num; i++) {
+        if (num % i === 0) return false;
+      }
+      return num > 1;
+    });
+    return primes.join(", ");
+  }
   return "";
 }

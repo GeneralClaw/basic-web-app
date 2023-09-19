@@ -49,4 +49,9 @@ describe("QueryProcessor", () => {
         expect(QueryProcessor("Which of the following numbers is both a square and a cube: 677, 624, 64, 324, 512, 3678, 362?")).toEqual("64");
         expect(QueryProcessor("Which of the following numbers is both a square and a cube: 677, 624, 324, 512, 3678, 362?")).toEqual("");
     });
+    // Which of the following numbers are primes: 88, 23, 96, 10, 12?
+    test('should find primes', () => {
+        expect(QueryProcessor("Which of the following numbers are primes: 88, 23, 96, 10, 12?")).toEqual("23");
+        expect(QueryProcessor("Which of the following numbers are primes: 88, 96, 10, 12?")).toEqual("");
+    });
 });
